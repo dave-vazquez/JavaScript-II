@@ -1,70 +1,155 @@
-// ==== Challenge 1: Write your own closure ====
-// Write a simple closure of your own creation.  Keep it simple!
+console.log(); // line break
 
 
 
-/* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
+/*********************************************************************************
+*                        CHALLENGE 1: Write your own closure                     *
+**********************************************************************************/ 
+logHeader('CHALLENGE 1: Write your own closure', 'Write a simple closure of your own creation. Keep it simple! (nahh..)');
+
+/* 
+  Write a simple closure of your own creation.  Keep it simple!
+*/
 
 
-// ==== Challenge 2: Create a counter function ====
+
+
+
+
+/*********************************************************************************
+*                        CHALLENGE 2: Create a counter function                  *
+**********************************************************************************/ 
+logHeader('STRETCH CHALLENGE 2: Create a counter function');
 const counter = () => {
-  // Return a function that when invoked increments and returns a counter variable.
   let count = 0;
-
+  
+  // Return a function that when invoked increments and returns a counter variable
   return function () {
-    console.log(count++);
+    return count++;
   }
 };
-// Example usage: const newCounter = counter();
-// newCounter(); // 1
-// newCounter(); // 2
 
 const newCounter = counter();
 
-newCounter();
-newCounter();
-newCounter();
-newCounter();
-newCounter();
-newCounter();
-newCounter();
-newCounter();
+console.log(newCounter()); // 1
+console.log(newCounter()); // 2
+console.log(newCounter()); // 3
+console.log(newCounter()); // 4
+console.log(newCounter()); // 5
 
-// ==== Challenge 3: Create a counter function with an object that can increment and decrement ====
+
+
+
+/*********************************************************************************
+* CHALLENGE 3: Create a counter function w/object that increments and decrements *
+**********************************************************************************/ 
+logHeader('CHALLENGE 3: Create a counter function w/object that increments and decrements', 'Return an object that has two methods called \'increment\' and \'decrement\'.\n\'increment\' should increment a counter variable in closure scope and return it.\n\'decrement\' should decrement the counter variable and return it.');
+
+/*
+  Return an object that has two methods called `increment` and `decrement`.
+  `increment` should increment a counter variable in closure scope and return it.
+  `decrement` should decrement the counter variable and return it.
+*/
+
 const counterFactory = () => {
-  // Return an object that has two methods called `increment` and `decrement`.
-  // `increment` should increment a counter variable in closure scope and return it.
-  // `decrement` should decrement the counter variable and return it.
-
   let count = 0;
 
   return {
     increment: function() {
-      console.log(count++);
+      return count++;
     },
-    decrement: function() {
-      console.log(count--);
+
+    decrement: function () {
+      return count--;
     }
   }
 };
 
-const randomCounter = counterFactory();
 
-let count = 0
-let dot = '                                        .';
+// counterFactory is invoked inside randomCounterFactory below
+const randomCounterFactory = () => {
 
-// setInterval(() => {
-//   if(Math.random() >= .5) {
-//     dot = [' ', ...dot.split('')].join('');
-//     console.log(`${randomCounter.increment()}${dot}`);
-//   }
-//   else {
-//     dot = dot.split('').slice(1, dot.length).join('');
-//     console.log(`${randomCounter.decrement()}${dot}`);
-//   }
+  const counter = counterFactory();
+
+  // // new method added to counter to set limits to the 'randomCounter'
+  // counter.beyondLimits = function() {
+  //   console.log(this.beyondLimits);
+  //   return this.count === -40 || this.count === 40;
+  // }
+
+  const ticker = {
+    
+    // string representation of the 'ticker'
+    string: `                                       .`,
+
+    // removes first space of the ticker string
+    shiftTicker: function () {
+      return this.string.split('')
+                        .slice(1, this.string.length)
+                        .join('');
+    },
+
+    // adds a space to the beginning of the 'ticker' string
+    unshiftTicker: function () {
+      return [ ' ', ...this.string.split('') ].join('');
+    },
+
+    beyondLimits: function () {
+      
+      return this.string.length === 0 || this.string.length === 80;
+    }
+  }
+
+  return {
+    start: interval => {
+
+        const startCounter = setInterval(() => {
+
+          if(ticker.beyondLimits())
+            clearInterval(startCounter);
+
+          if(Math.random() >= .5) {
+            ticker.string = ticker.unshiftTicker();
+            console.log(`${counter.increment()}${ticker.string}`);
+          }
+
+          else {
+            ticker.string = ticker.shiftTicker();
+            console.log(`${counter.decrement()}${ticker.string}`);
+          }
+
+      }, interval)
+    }
+  }
+}
+
+const randomCounter = randomCounterFactory(); 
+
+randomCounter.start(250);
+
+/* ****************************************************************************************************************************************************************************** */
+
+
+
+/*********************************************************************************
+*                                   Log Header                                   *
+**********************************************************************************/ 
+function logHeader(messageHeader, message = '') {
+
+  (function assembleMessageHeader() {
+      let top    = '\n/*********************************************************************************\n';
+      let middle = `*                                                                                *\n`;
+      let bottom = `**********************************************************************************/\n`;
+
+      let messageStart = (middle.length/2) - (messageHeader.length/2)
+      let messageEnd = (middle.length/2) + (messageHeader.length/2);
+    
+      middle = middle.slice(0,messageStart) + messageHeader + middle.slice(messageEnd, middle.length);
+
+      messageHeader = top + middle + bottom;
+  })();
   
-  
-//   // console.log(`${randomCounter.increment()} ${dot = [' ', ...dot.split('')].join('')}`) : console.log(`${randomCounter.decrement()} ${dot = dot.split('').slice(1, dot.length).join('')}`);
-
-
-// }, 5);
+  console.log(messageHeader);
+  message ? console.log(message + '\n') : null;
+  console.log('Output:\n');
+}
