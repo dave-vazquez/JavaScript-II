@@ -145,7 +145,7 @@ function logHeader(messageHeader, funcInvoke, showArray = true) {
   })();
 
   // log header
-  console.log(top + middle + bottom);
+  console.log(messageHeader);
 
   // log array
   if(showArray) {
