@@ -81,6 +81,16 @@ body {
   color: white;
   background-color: #0059ff;
 }
+@media (max-width: 1020px) {
+  .container .left-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
+  }
+}
 .container .right-panel {
   width: 50%;
 }
@@ -90,4 +100,26 @@ body {
   color: white;
   background-color: black;
   font-family: 'Courier New', Courier, monospace;
+}
+@media (max-width: 1020px) {
+  .container .right-panel {
+    width: 100%;
+  }
+  .container .right-panel #node-terminal {
+    margin-top: 20px;
+    width: 100%;
+    height: 1000px;
+  }
+}
+@media (max-width: 1020px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    height: auto;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
 }
