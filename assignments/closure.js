@@ -11,8 +11,7 @@ logHeader('CHALLENGE 1: Write your own closure', 'Write a simple closure of your
   Write a simple closure of your own creation.  Keep it simple!
 */
 
-
-
+console.log('See consoleCannon.js & ../consoleCannon/');
 
 
 
@@ -36,7 +35,6 @@ console.log(newCounter()); // 2
 console.log(newCounter()); // 3
 console.log(newCounter()); // 4
 console.log(newCounter()); // 5
-
 
 
 
@@ -70,12 +68,6 @@ const counterFactory = () => {
 const randomCounterFactory = () => {
 
   const counter = counterFactory();
-
-  // // new method added to counter to set limits to the 'randomCounter'
-  // counter.beyondLimits = function() {
-  //   console.log(this.beyondLimits);
-  //   return this.count === -40 || this.count === 40;
-  // }
 
   const ticker = {
     
@@ -127,9 +119,9 @@ const randomCounter = randomCounterFactory();
 
 randomCounter.start(250);
 
+
+
 /* ****************************************************************************************************************************************************************************** */
-
-
 
 /*********************************************************************************
 *                                   Log Header                                   *

@@ -154,7 +154,9 @@ function logHeader(messageHeader, funcInvoke, showArray = true) {
   }
 
   // log function invocation
-  funcInvoke ? console.log(funcInvoke): null;
+  if(funcInvoke) {  
+    console.log(funcInvoke);
+  }
   console.log(); // line break
 }
 

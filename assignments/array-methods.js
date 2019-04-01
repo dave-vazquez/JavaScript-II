@@ -159,7 +159,6 @@ console.log(ticketPriceTotal);
 /*********************************************************************************
 *                                   Log Header                                   *
 **********************************************************************************/ 
-
 function logHeader(messageHeader, message = '') {
 
     (function assembleMessageHeader() {
@@ -179,4 +178,4 @@ function logHeader(messageHeader, message = '') {
     console.log(messageHeader);
     console.log(message + '\n');
     console.log('Output:\n');
-  }
+}
