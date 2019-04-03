@@ -156,6 +156,29 @@ console.log(married);
 
 // Problem 2
 
+console.log('\n\nThe event director has decided to match 5% of the total donations of all runners and add that amount to each runners donation. H\'es filthy rich.');
+
+let getDonations = runner => `${runner.id}: dono = ${runner.donation}`;
+
+let runnerDonationsBefore = runners.map(getDonations);
+
+let totalDonations = runners.map(runner => runner.donation).reduce((dono1, dono2) => dono1 + dono2);
+
+let directorDonationMatch = Math.round(totalDonations * .05);
+
+runners.forEach(runner => {
+    runner.donation += directorDonationMatch;
+});
+
+let runnerDonationsAfter = runners.map(getDonations);
+
+console.log('runner donations before:');
+console.log(runnerDonationsBefore);
+
+console.log(`\nDirectors Donation Match: ${directorDonationMatch}\n\n`);
+console.log('runner donations after:');
+console.log(runnerDonationsAfter);
+
 // Problem 3
 
 
