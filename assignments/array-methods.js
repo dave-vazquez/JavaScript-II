@@ -148,7 +148,6 @@ console.log('\nJuan Berzon and Charleen Sheering just got married. They\'re a ve
 let married = runners.filter(runner => (runner.first_name === 'Juan' && runner.last_name === 'Berzon') || (runner.first_name === 'Charleen' && runner.last_name === 'Sheering'))
                      .map(runner => {
                          runner.last_name = 'Sheering';
-
                          return runner;
                      });
 
@@ -156,7 +155,7 @@ console.log(married);
 
 // Problem 2
 
-console.log('\n\nThe event director has decided to match 5% of the total donations of all runners and add that amount to each runners donation. H\'es filthy rich.');
+console.log('\n\nThe event director has decided to match 5% of the total donations of all runners and to add that amount to each runners donation. He\'s filthy rich.');
 
 let getDonations = runner => `${runner.id}: dono = ${runner.donation}`;
 
