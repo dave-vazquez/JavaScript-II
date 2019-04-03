@@ -134,12 +134,25 @@ console.log(ticketPriceTotal);
 /*********************************************************************************
 *                             CHALLENGE 5: Be Creative                           *
 **********************************************************************************/ 
-
-// ==== Challenge 5: Be Creative ====
-// Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  
-// Try to create and then solve 3 unique problems using one or many of the array methods listed above.
+logHeader('CHALLENGE 5: Be Creative', 'Try to create and then solve 3 unique problems using one or many of the array methods');
+/*
+    ==== Challenge 5: Be Creative ====
+    Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  
+    Try to create and then solve 3 unique problems using one or many of the array methods listed above.
+*/
 
 // Problem 1
+
+console.log('\nJuan Berzon and Charleen Sheering just got married. They\'re a very progressive, forward-thinking couple, so update both their lastname\'s to Charleen\'s last name.\n');
+
+let married = runners.filter(runner => (runner.first_name === 'Juan' && runner.last_name === 'Berzon') || (runner.first_name === 'Charleen' && runner.last_name === 'Sheering'))
+                     .map(runner => {
+                         runner.last_name = 'Sheering';
+
+                         return runner;
+                     });
+
+console.log(married);
 
 // Problem 2
 
